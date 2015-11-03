@@ -1,0 +1,85 @@
+-content_for :title, 'Image Locator - show image'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h1= t('images.show.title')
+.row
+  .columns.large-6
+    =image_tag @image.image.normal.url
+  .columns.large-6
+    .row
+      -if @votes.empty?
+        %p
+          =raw t('votes.no_records')
+          -# =link_to(t('images.index.new_image'), new_image_path, class: 'button')
+      -else
+        #votes-holder.panel
+          %ul
+            =render partial: 'images/vote', collection: @votes
+    .row
+      -if not user_signed_in? or current_user.id != @image.user_id
+        %div{class: 'button_holder'}
+        -if @type == 'voted'
+          =link_to t('images.index.edit'), edit_image_vote_path(@image, id: @image.id), class: 'radius button success small'
+        -elsif @type == 'unknown'
+          .panel
+            =t 'images.index.i_know_location'
+            %br
+            =link_to t('images.index.yes'), new_image_vote_path(@image), class: 'radius button success small'
+        -else
+          .panel
+            =t 'images.index.i_know_location'
+            %br
+            -# DONE @tibo Use Ajax to send a POST request to the url specified in att data_request
+            =link_to t('images.index.yes'), new_image_vote_path(@image), class: 'radius button success small'
+            -if user_signed_in? # DONE @Tibo when user is not signed-in do not display btn
+              =link_to t('images.index.no'), {:controller => "votes", :action => "unknow", :image_id => @image.id } , data: { confirm: t('images.index.sure_dont_know'), :remote => true }, class: 'radius button alert small no-button'
+
+.row
+  -if @image.tags.count > 0
+    -# %h2= "Tags";
+    %br
+    %ul.inline-list
+      -@image.tags.each do |i|
+        %li.radius.secondary.label= i.name
+    %br
+  -else
+    %br
+
+.row
+  -if not @votes.empty?
+    #map
+
+
+-if @votes_location
+  :javascript
+    handler = Gmaps.build('Google');
+    handler.buildMap(
+        {
+            internal: {id: 'map'}
+        },
+        function() {
+            var markers2 = handler.addMarkers(
+              #{raw @votes_location.to_json}
+            );
+
+            if(#{@image_location[0]} != 1000) {
+              //calculated location
+              markers = handler.addMarker(
+                {
+                  lat: #{@image_location[0]},
+                  lng: #{@image_location[1]},
+                  picture: {
+                    url: '#{ asset_path('marker_found.png') }',
+                    width:  36,
+                    height: 58
+                  }
+                }
+              );
+            }
+
+
+            handler.bounds.extendWith(markers2);
+            handler.fitMapToBounds();
+        }
+    );
+

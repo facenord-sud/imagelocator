@@ -1,0 +1,46 @@
+.contain-to-grid.sticky
+  %nav.top-bar{'data-topbar' => ''}
+    %ul.title-area
+      / Title Area
+      %li.name
+        %h1= link_to image_tag("image_locator.png"), eval("root_#{I18n.locale}_path")
+      / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+      %li.toggle-topbar.menu-icon
+        %a{href: "#"}
+          %span
+    %section.top-bar-section
+      -if user_signed_in?
+        %ul.left
+          %li= link_to t('users.show.user_new'), eval("root_#{I18n.locale}_path")
+          %li.hide-for-small.workflow &#10148;
+          %li= link_to t('users.show.user_pending'), user_images_path(current_user, type: 'pending')
+          %li.hide-for-small.workflow &#10148;
+          %li= link_to t('users.show.user_located'), user_images_path(current_user, type: 'located')
+          -#%li
+            -#=link_to(t('images.index.new_image'), new_image_path, class: 'button')
+      %ul.right
+        %li
+          =link_to(t('images.index.new_image'), new_image_path, class: 'button uploadBtn round')
+        %li.hide-for-small
+          -if user_signed_in?
+            =print_unread_notifications
+            %li.has-dropdown
+              %a.settings_link{href: "#"}
+                %span.fi-widget
+                  %span.show-for-small
+                    =t('header.user.settings')
+              %ul.dropdown
+                %li
+                  %label= current_user.name
+                %li= link_to t('header.user.edit'), edit_user_registration_path
+                %li.divider
+                -#%li= link_to t('users.show.user_located'), user_images_path(current_user, type: 'located')
+                -#%li= link_to t('users.show.user_pending'), user_images_path(current_user, type: 'pending')
+                %li= link_to t('users.show.user_votes'), user_images_path(current_user, type: 'voted')
+                %li= link_to t('users.show.user_unknown'), user_images_path(current_user, type: 'unknown')
+                %li= link_to t('users.show.user_notifications'), user_notifications_path(current_user)
+                %li.divider
+                %li= link_to t('header.user.logout'), destroy_user_session_path, method: :delete, class: 'logoutBtn'
+          -else
+            %li.has-form= link_to(t('header.sign_up'), new_user_registration_path, class: 'button radius')
+            %li.has-form= link_to(t('header.sign_in'), new_user_session_path, class: 'button success radius')

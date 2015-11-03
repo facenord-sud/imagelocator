@@ -1,0 +1,44 @@
+%p
+  = image.comment unless image.comment.blank?
+  %div
+    -if image.owner == current_user
+      =raw t('images.index.yours')
+      -if panel
+        =link_to t('images.index.more'), image_path(image), class: 'right radius button small'
+      -else
+        =link_to image_tag("trash.png"), {:controller => "images", :action => "delete", :image_id => image.id } , data: { confirm: t('images.index.sure_delete'), :remote => true }, class: 'right img_btn'
+        =link_to image_tag("more.png"), image_path(image), class: 'right img_btn'
+      %br
+    -else
+      =raw t('images.index.added_by', user: h(image.owner))
+    %span{ :class => 'info_text'}
+      = t('images.time_ago', time: time_ago_in_words(image.created_at))
+  -# tibo: removes the buttons of the current image if added by you
+-if not user_signed_in? or current_user.id != image.user_id
+  %div{class: 'button_holder'}
+  -if @type == 'voted'
+    =link_to t('images.index.edit'), edit_image_vote_path(image, id: image.id), class: 'radius button success small'
+    -if panel
+      =link_to t('images.index.more'), image_path(image), class: 'right radius button small'
+    -else
+      =link_to image_tag("more.png"), image_path(image), class: 'right img_btn'
+  -elsif @type == 'unknown'
+    =t 'images.index.i_know_location'
+    %br
+    =link_to t('images.index.yes'), new_image_vote_path(image), class: 'radius button success small'
+    -if panel
+      =link_to t('images.index.more'), image_path(image), class: 'right radius button small'
+    -else
+      =link_to image_tag("more.png"), image_path(image), class: 'right img_btn'
+  -else
+    =t 'images.index.i_know_location'
+    %br
+    -# DONE @tibo Use Ajax to send a POST request to the url specified in att data_request
+    =link_to t('images.index.yes'), new_image_vote_path(image), class: 'radius button success small'
+    -if user_signed_in? # DONE @Tibo when user is not signed-in do not display btn
+      =link_to t('images.index.no'), {:controller => "votes", :action => "unknow", :image_id => image.id } , data: { :remote => true }, class: 'radius button alert small no-button'
+      -# unknow_image_votes_path(image)
+      -if panel
+        =link_to t('images.index.more'), image_path(image), class: 'right radius button small'
+      -else
+        =link_to image_tag("more.png"), image_path(image), class: 'right img_btn'

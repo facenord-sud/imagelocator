@@ -1,0 +1,138 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  hello: "Hello World"
+  lang:
+    fr: Français
+    en: Anglais
+    de: Allemand
+  default_title: "Image locator c'est du crowdsourcing"
+  default_key_words: "images locations, crowdsourcing"
+  default_description: "Tu peux localiser des images inconnues grâce a la communeauté!"
+  hello: "Hello world"
+  app_name: "Image Locator"
+  tags: "Catégories principales: Mountains, Animals, Urban, Nature, Art, Sea, Forest"
+  header:
+    sign_up: "S'inscrire"
+    sign_in: "Se connecter"
+    user:
+      settings: "Réglages"
+      edit: "Modifier profil"
+      logout: "Déconnexion"
+    notifications: "%{size} unread notifications"
+  user:
+    tag: Lieux connus
+    show:
+      profil: "Mon profil"
+    votes:
+      title: "Mes votes"
+    unknown:
+      title: "Images inconnues"
+  images:
+    tag: Tags
+    index:
+      new_image: "Uploader une image"
+      added_by: <span class='info_text'>Ajouté par</span> %{user}
+      yours: Ton <span class='info_text'>image, ajoutée</span>
+      i_know_location: "Je connais le lieux"
+      yes: "Oui"
+      no: "Non"
+      edit: "Éditer"
+      sure_dont_know: "Tu ne connais vraiment pas le lieux?"
+      sure_delete: "Tu veux vraiment supprimer cette image?"
+      more: "plus"
+      user_statistics_title: "'s statistics:"
+      user_statistics_credits: "Cédits:"
+      user_statistics_points: "Points"
+      user_statistics_total: "Votes:"
+      user_statistics_votes: ""
+      user_statistics_last_seven_days: "Derniers 7 jours:"
+      user_statistics_uploads: "Uploads:"
+      user_statistics_known_images: "Images connues:"
+    new:
+      title: "Charger une nouvelle image"
+      out_of_uploads_message: "Désolé, mais tu n'as pas assez de points pour ajouter une image. Tu peux gagner des points en votant pour des images d'autres personnes."
+      info: "Le chargement peut durer un moment, s.v.p. soyez patient..."
+    create:
+      success: "Ton image à été ajoutée!"
+    edit:
+      title: "Changer ton vote"
+    time_ago: "il y a %{time}"
+    show:
+      title: "Plus d'infos"
+  votes:
+    index:
+      title: "Ou a été pris cette photo?"
+      map_info: "Clique sur le lieu sur la carte"
+    create:
+      notice:
+        success: "Merci, image bien localisé"
+        already_voted: "Tu as déjà voté 3x pour cette image"
+    edit:
+      title: "Changer ton vote"
+      notice:
+        success: "Image édité avec succès"
+        error: "Erreur l'ors de l'édition. Essayez plus tard."
+    unknow:
+      status: "Vous ne connaissez pas le lieu"
+    no_records: <div class='panel text-center custom-alert radius'>Aucun vote pour l'instant...</div>
+    exceptions:
+      nil_coordinate: "Une erreur est survenue pendant le calcul des coordonnées. Réeessayer dans un moment svp."
+  users:
+    show:
+      user_located: "Localisées"
+      user_pending: "En attente"
+      user_votes: "Mes votes"
+      user_unknown: "Images inconnues"
+      user_notifications: "Notifications"
+      user_new: "Nouveautés"
+    images:
+      no_records: "<div class='panel text-center custom-alert radius'>Rien à montrer ici...</div>"
+      uploaded:
+        title: Les images que j'ai uploadé
+      located:
+        title: Les images que j'ai localisé
+      pending:
+        title: Images qui n'ont pas encore été localisées
+      voted:
+        title: Mes votes
+      unknown:
+        title: Images dont je ne connais pas le lieu
+      wrong_location:
+        button: Mauvais lieu
+        sure: Est-ce que cette image a vraiment été localisé au mauvais endroit? 3 personnes pensent que le lieu est correct...
+    notifications:
+      title: "Notifications"
+    registrations:
+      new:
+        title: "Notifications"
+  devise:
+    registrations:
+      new:
+        omniauth:
+          title: "Inscris-toi avec les réseaux sociaux"
+          blockquote: Nous prenons que votre adresse mail et pas d'informations personnelles.
+      edit:
+        title: "Modifier mon profil"
+  notifications:
+    content: Ton image a bien été localisée
+    img_deleted: "Ton image a été supprimée"

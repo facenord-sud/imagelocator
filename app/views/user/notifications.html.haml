@@ -1,0 +1,17 @@
+-content_for :title, 'Image Locator - Notifications'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h2= t('users.notifications.title')
+
+-if @notifications.empty?
+  %p
+    =raw t('users.images.no_records')
+-else
+  %ul.no-bullet
+    -@notifications.each do |n|
+      %li
+        .panel{:class => ("new-notification" unless n.is_viewed?)}
+          .right.info_text
+            =t('images.time_ago', time: time_ago_in_words(n.created_at))
+          =raw n.print_message
+  =paginate @notifications

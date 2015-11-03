@@ -1,0 +1,136 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+de:
+  lang:
+      fr: Französich
+      en: English
+      de: Deutsch
+  default_title: "Image locator ist Crowdsourcing"
+  default_key_words: "images locations, crowdsourcing"
+  default_description: "Benütze die Hilfe der Crowd um deine Bilder zu lokalisieren."
+  hello: "Hello world"
+  app_name: "Image Locator"
+  tags: "Hauptkategorien: Mountains, Animals, Urban, Nature, Art, Sea, Forest"
+  header:
+    sign_up: "Registrieren"
+    sign_in: "Anmelden"
+    user:
+      settings: "Einstellungen"
+      edit: "Profil Bearbeiten"
+      logout: "Abmelden"
+    notifications: "%{size} ungelesene Benachrichtigungen"
+  user:
+    tag: Bekannte Orte
+    show:
+      profil: "Mein Profil"
+    votes:
+      title: "Meine erkannten Bilden"
+    unknown:
+      title: "Meine nicht erkannten Bilder"
+  images:
+    tag: Tags
+    index:
+      new_image: "Bild hochladen"
+      added_by: <span class='info_text'>Hochgeladen von</span> %{user}
+      yours: Dein <span class='info_text'>Bild, hochgeladen</span>
+      i_know_location: "Ja, ich kenne den Ort"
+      yes: "Ja"
+      no: "Nein"
+      edit: "Bearbeiten"
+      sure_dont_know: "Bist du sicher, dass du den Ort nicht kennst?"
+      sure_delete: "Willst du dieses Bild wirklich löschen?"
+      more: "more"
+      user_statistics_title: "'s Statistik:"
+      user_statistics_credits: "Kredite:"
+      user_statistics_points: "Punkte"
+      user_statistics_total: "Stimmen:"
+      user_statistics_votes: ""
+      user_statistics_last_seven_days: "Letzen 7 Tage:"
+      user_statistics_uploads: "Hochgeladen:"
+      user_statistics_known_images: "Erkannt:"
+    new:
+      title: "Bild hochladen"
+      out_of_uploads_message: "Leider hast du nicht genügend Punkte, um weitere Bilder hochzuladen. Du kannst jedoch deine Punktzahl erhöhen, indem du anderen hilfst, ihre Bilder zu lokalisieren."
+      info: "Das hochladen eines Bildes kann etwas dauern, bitte seien Sie geduldig..."
+    create:
+      success: "Dein Bild wurde erfolgreich hochgeladen!"
+    edit:
+      title: "Meine Stimme überarbeiten"
+    time_ago: "%{time} zuvor"
+    show:
+      title: "Mehr Details über dieses Bild"
+  votes:
+    index:
+      title: "Wo wurde dieses Bild aufgenommen?"
+      map_info: "Klick auf die richtige Position auf der Karte"
+    create:
+      notice:
+        success: "Du hast erfolgreich ein Bild positioniert"
+        already_voted: "Du hast dieses Bild schon drei mal positioniert."
+    edit:
+      title: "Meine Stimme überarbeiten"
+      notice:
+        success: "Erfolgreich bearbeitet"
+        error: "Fehler. Bild wurde nicht bearbeitet."
+    unknow:
+      status: "Du hast die Position nicht erkannt."
+    no_records: <div class='panel text-center custom-alert radius'>No votes yet...</div>
+    exceptions:
+      nil_coordinate: "Eine Fähler ist während der Koordinate Rechnenen angekommen. Bitte versuchen sie in ein Augenblick"
+  users:
+    show:
+      user_located: "Erkannt"
+      user_pending: "Ausstehend"
+      user_votes: "Meine lokalisierten Bilder"
+      user_unknown: "Nicht gekannte Bilder"
+      user_notifications: "Benachrichtigungen"
+      user_new: "Neu"
+    images:
+      no_records: "<div class='panel text-center custom-alert radius'>Hier gibts nichts Neues...</div>"
+      uploaded:
+        title: "Meine hochgeladenen Bilder"
+      located:
+        title: "Meine lokalisierten Bilder"
+      pending:
+        title: "Bilder, die lokalisiert werden wollen"
+      voted:
+        title: "Meine Stimmen"
+      unknown:
+        title: "Bilder deren Ort ich nicht kenne"
+        button: "Falscher Ort"
+        sure: "Bist du sicher, dass der Ort nicht stimmt? Mindestens drei Leute haben dieses Bild an disem Ort lokalisiert."
+    notifications:
+      title: "Benachrichtigungen"
+    registrations:
+      new:
+        title: "aspdhfasdé"
+  devise:
+    registrations:
+      new:
+        omniauth:
+          title: "Mit meinem sozialen Netzwerk Login anmelden."
+          blockquote: "Wir benützen lediglich deine Email-Adresse und keine persönlichen Informationen."
+      edit:
+        title: "Profil bearbeiten"
+  notifications:
+    content: "Wir haben herausgefunden, wo dein Bild aufgenommen wurde."
+    img_deleted: "Das Bild wurde gelöscht..."

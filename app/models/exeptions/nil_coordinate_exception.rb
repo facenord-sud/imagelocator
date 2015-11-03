@@ -1,0 +1,2 @@
+class NilCoordinateException < Exception
+end

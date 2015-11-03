@@ -1,0 +1,139 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello World"
+  lang:
+      fr: French
+      en: English
+      de: German
+  default_title: "Image locator is crowdsourcing"
+  default_key_words: "images locations, crowdsourcing"
+  default_description: "You can locate image where you didn't know the location with the power of people!"
+  hello: "Hello world"
+  app_name: "Image Locator"
+  tags: "Main categories: Mountains, Animals, Urban, Nature, Art, Sea, Forest"
+  header:
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    user:
+      settings: "Settings"
+      edit: "Edit profile"
+      logout: "Logout"
+    notifications: "%{size} unread notifications"
+  user:
+    tag: Locations you know
+    show:
+      profil: "My profile"
+    votes:
+      title: "Mes votes"
+    unknown:
+      title: "My unknown images"
+  images:
+    tag: Tags
+    index:
+      new_image: "Upload Image"
+      added_by: <span class='info_text'>Added by</span> %{user}
+      yours: Your <span class='info_text'>image, added</span>
+      i_know_location: "I know the location"
+      yes: "Yes"
+      no: "No"
+      edit: "Edit"
+      sure_dont_know: "Are you sure you don't know the location?"
+      sure_delete: "Do you really want to delete this image?"
+      more: "more"
+      user_statistics_title: "'s statistics:"
+      user_statistics_credits: "Credits:"
+      user_statistics_points: "points"
+      user_statistics_total: "Votes:"
+      user_statistics_votes: ""
+      user_statistics_last_seven_days: "Last 7 days:"
+      user_statistics_uploads: "Uploads:"
+      user_statistics_known_images: "Known images:"
+    new:
+      title: "Upload a new image"
+      out_of_uploads_message: "Sorry but you have not enough points for new uploads left. By helping others to locate their pictures, you can increase your points."
+      info: "Uploading an image may take some time, please be patient..."
+    create:
+      success: "You image as been uploaded!"
+    edit:
+      title: "Edit your vote"
+    time_ago: "%{time} ago"
+    show:
+      title: "More about this image"
+  votes:
+    index:
+      title: "Where was this picture taken?"
+      map_info: "Click on the position in the map"
+    create:
+      notice:
+        success: "You located one image"
+        already_voted: "You already voted 3 times for this images"
+    edit:
+      title: "Edit your vote"
+      notice:
+        success: "You edited the image"
+        error: "Error while editing the image"
+    unknow:
+      status: "You didn't know the location"
+    no_records: <div class='panel text-center custom-alert radius'>No votes yet...</div>
+    exceptions:
+      nil_coordinate: "An error as occured while processing coordinates. Please try later"
+  users:
+    show:
+      user_located: "Located"
+      user_pending: "Pending"
+      user_votes: "My votes"
+      user_unknown: "Unknown images"
+      user_notifications: "Notifications"
+      user_new: "New"
+    images:
+      no_records: "<div class='panel text-center custom-alert radius'>Nothing to show here...</div>"
+      uploaded:
+        title: The images I uploaded
+      located:
+        title: The images I located
+      pending:
+        title: Images who have not been localized now...
+      voted:
+        title: My votes
+      unknown:
+        title: Images I don't know the location of
+      wrong_location:
+        button: Wrong location
+        sure: Are you sure that this image was located on the wrong place? At least 3 people think it's there...
+    notifications:
+      title: "Notifications"
+    registrations:
+      new:
+        title: "Notifications"
+  devise:
+    registrations:
+      new:
+        omniauth:
+          title: "Sign in with social networks"
+          blockquote: We only take your user email and no other personal informations
+      edit:
+        title: "Edit my profile"
+  notifications:
+    content: We found the location of your image
+    img_deleted: "This image no longer exists..."
+    no_rights_to_vote: "You can't vote your own image"

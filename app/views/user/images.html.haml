@@ -1,0 +1,13 @@
+-content_for :title, 'Image Locator - My images'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h2= t("users.images.#{@type}.title")
+
+-if @images.empty?
+  %p
+    =raw t('users.images.no_records')
+    -# =link_to(t('images.index.new_image'), new_image_path, class: 'button')
+-else
+  .js-masonry{:id=>"mansonry-container", :'data-masonry-options'=>'{ "columnWidth": 300, "itemSelector": ".box" }'}
+    =render partial: 'images/image', collection: @images
+  =paginate @images

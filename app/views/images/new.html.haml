@@ -1,0 +1,18 @@
+-content_for :title, 'Image Locator - Upload image'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h2= t('images.new.title')
+-if current_user.points>=4
+  .panel.radius
+    =simple_form_for @image do |f|
+      =f.input :image
+      = t 'images.tag'
+      =f.association :tags, as: :hidden, collection: '', input_html: {id: 'tags', style: 'width: 80%'}
+      %p= t('tags')
+      %br
+      =f.button :submit, t('images.new.title')
+    %p= t('images.new.info')
+-else
+  .panel.custom-alert
+    %p= t('images.new.out_of_uploads_message')
+

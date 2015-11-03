@@ -1,0 +1,283 @@
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation-icons';
+@import "sweet-alert";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/side-nav";
+
+$customBaseColor: #A5DC86;
+$customWarningColor: #F27474;
+
+/* fonts */
+@font-face {
+  font-family: 'call_me_maybe';
+  src: font-url('call_me_maybe.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'orange_juice';
+  src: font-url('orange_juice.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'peach_milk';
+  src: font-url('peach_milk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Style for the map, by Tibo */
+
+.map, #map {
+  height: 400px !important;
+  margin-bottom: 20px;
+  display: block;
+  float: none !important;
+}
+
+.map label, .smallMap label, #map label { width: auto !important; display:inline!important; }
+.map img, .smallMap label, #map img { max-width: none!important; }
+
+#spinner {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* footer */
+$footheight : 42px;
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $footheight;
+  background: #000000;
+  color: gray;
+}
+
+#foot-pusher {
+  height: $footheight !important;
+}
+
+ul#user-stats {
+  font-size: 0.8em;
+  margin: auto !important;
+  width: 650px;
+  padding-top: ($footheight - 20)/2;
+  color: gray;
+  li.first b {
+    color: $customWarningColor;
+  }
+  li:not(.first) {
+    padding-left: 18px;
+    border-left: 1px solid gray;
+  }
+}
+
+/* other */
+
+.workflow {
+  color: #c3c3c3;
+  font-weight: bold;
+  line-height: 44px;
+  vertical-align: middle;
+}
+
+.first_row {
+  margin-top: 10px !important;
+}
+
+.reveal-modal {
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 60% !important;
+    max-width: 60% !important;
+  }
+}
+
+.info_text {
+  font-size: 0.8em;
+  color: #afafaf;
+}
+
+.button_holder {
+  a, a:hover {
+    color: #000000;
+  }
+  color: #000000;
+}
+
+.box{
+  width: 300px;
+  float: left;
+  margin: 10px;
+  background: transparent;
+}
+
+.box img {
+  height: auto;
+}
+
+.imagePanel {
+  background-color:whitesmoke;
+  border-bottom-right-radius: 7px;
+  border-top-left-radius: 7px;
+  a:hover {
+    color: #000000;
+    text-decoration: underline;
+    img {
+      border: $customBaseColor solid 1px;
+    }
+  }
+  a {
+    color: #000000;
+  }
+}
+
+.imagePanel.imageHolder {
+  a:hover {
+    color: #000000;
+    text-decoration: none;
+    img {
+      border: $customBaseColor solid 1px;
+    }
+  }
+}
+
+.imagePanel:hover {
+  background-color: ghostwhite;
+}
+
+h1, h1 a {
+  font-family: 'peach_milk' !important;
+  font-size: 1.8em;
+}
+
+h2 {
+  font-family: 'peach_milk' !important;
+  font-size: 1.6em;
+}
+
+.panel .button {
+  margin: 3px !important;
+}
+
+.uploadBtn {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  margin-right: 5px !important;
+}
+
+
+.uploadBtn:hover, .uploadBtn:active {
+  background-color: $customBaseColor !important;
+  color: #000000 !important;
+}
+
+.custom-alert {
+  background-color: $customWarningColor !important; //#ffb769 !important;
+  font-size: 1.5em;
+  -webkit-border-top-left-radius: 20px !important;
+  -webkit-border-bottom-right-radius: 20px !important;
+  -moz-border-radius-topleft: 20px !important;
+  -moz-border-radius-bottomright: 20px !important;
+  border-top-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+}
+
+a.settings_link {
+  :hover, :active, :visited {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.top-bar-section>ul.left, .top-bar-section>ul.right {
+  background-color: #000000;
+}
+
+.logoutBtn:hover {
+  background-color: $customWarningColor !important;
+}
+
+a.img_btn:hover {
+  img {
+    border: none !important;
+    width: 100%;
+    height: 100%;
+    opacity:0.35;
+  }
+  border: none !important;
+}
+
+.user_statistics{
+  float:left;
+  position: relative;
+  width:200px;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color:whitesmoke;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #C9DAE1;
+}
+
+.new-notification {
+  border: solid 1px $customBaseColor;
+}
+
+.js-masonry{
+  max-width:1000px;
+}
+
+#votes-holder {
+  max-height: 350px;
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  ul {
+    list-style-type: none;
+  }
+  li {
+    padding-bottom: 10px;
+    border-bottom: dashed 2px $customBaseColor;
+    margin: 10px;
+  }
+  .voter {
+    text-decoration: underline;
+  }
+  .vote-comment {
+    font-style: italic;
+  }
+}
+
+.selected {
+  text-decoration: underline;
+  color: $customBaseColor;
+}
+
+#vote_comment {
+  height: 200px;
+}
+
+.select2-container-multi .select2-choices {
+  min-width: 185px;
+}

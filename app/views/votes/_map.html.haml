@@ -1,0 +1,89 @@
+.row
+  %br
+  -if @vote.image.tags.count > 0
+    -# %h2= "Tags";
+    %ul.inline-list
+      -@vote.image.tags.each do |i|
+        %li.radius.secondary.label= i.name
+.row
+  %br
+  .info_text
+    = t('votes.index.map_info')
+  #map
+
+
+:javascript
+  var marker;
+  var text = "drag me to position";
+
+  handler = Gmaps.build('Google');
+  handler.buildMap(
+      {
+          internal: {id: 'map'}
+      },
+      function() {
+          //var options = {timeout:60000};
+          //if(navigator.geolocation) {
+          //    navigator.geolocation.getCurrentPosition(displayOnMap, displayOnMap, options);
+          //} else {
+          //    displayOnMap(0);
+          //}
+          handler.fitMapToBounds();
+
+          displayOnMapFromJson()
+
+          google.maps.event.addListener(handler.getMap(), 'click', function(e) {
+              //Remove marker
+              marker.setMap(null);
+
+              marker = new google.maps.Marker({
+                  position: e.latLng,
+                  map: handler.getMap(),
+                  title: text,
+                  draggable: true
+              });
+              handler.addMarker(marker);
+              updateFormLocation(marker.position);
+          });
+
+          google.maps.event.addListener(marker,'dragend',function(event) {
+              updateFormLocation(marker.position);
+          });
+
+      });
+
+  function displayOnMapFromJson() {
+      var myLat;
+      var myLng;
+      myLat = #{@vote.latitude};
+      myLng = #{@vote.longitude};
+      if (myLat==0 && myLng==0) {
+        handler.getMap().setZoom(2);
+      } else {
+        handler.getMap().setZoom(12);
+      }
+
+      var myLatlng = new google.maps.LatLng(myLat, myLng);
+      marker = new google.maps.Marker({
+          position: myLatlng,
+          map: handler.getMap(),
+          title: text,
+          draggable: true
+      });
+
+      handler.addMarker(marker);
+      handler.map.centerOn(myLatlng);
+      updateFormLocation(marker.position);
+
+  };
+
+  function updateFormLocation(latLng) {
+      $('#vote_latitude').val(latLng.lat());
+      $('#vote_longitude').val(latLng.lng());
+
+      window.setTimeout(function() {
+          handler.getMap().panTo(marker.getPosition());
+      }, 1000);
+  }
+
+

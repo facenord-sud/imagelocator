@@ -1,0 +1,21 @@
+-content_for :title, 'Image Locator - Vote'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h1= t('votes.index.title')
+
+.row{style: "height: 350px; max-height: 450px !important;"}
+  .columns.large-6
+    =image_tag @vote.image.image_url, {style: "max-height: 450px !important;"}
+  .columns.large-6{style: "height: 100%;"}
+    -# done 7.oct tibo Add the map for localization
+    =simple_form_for @vote, :html => { :style => "height: 100%;" }, url: image_votes_path(@vote.image) do |f|
+      =f.input :latitude, :as => :hidden
+      =f.input :longitude, :as => :hidden
+      =f.input :comment
+      .hide
+        =f.association :image
+      =f.button :submit, :style => "position: absolute; bottom: 0px;"
+
+= render 'map'
+
+-# #spinner (no more need, since we decided to put a world map...)

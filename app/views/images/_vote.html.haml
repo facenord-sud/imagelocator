@@ -1,0 +1,8 @@
+%li
+  .row
+    .left.voter
+      = vote.user.name
+    .right.info_text
+      = t('images.time_ago', time: time_ago_in_words(vote.updated_at))
+  .row.vote-comment
+    = vote.comment

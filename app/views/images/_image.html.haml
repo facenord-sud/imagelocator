@@ -1,0 +1,48 @@
+.box{ :id => "img#{image.id}" }
+  -# start modal Info
+  %div{ :id => "imgModal#{image.id}", :class => 'reveal-modal mapModal', 'data-reveal' => '' }
+    %a{ :class => 'close-reveal-modal' }
+      &#215;
+    = image_tag image.image.normal.url
+    = render 'images/image_info', {image: image, panel: true}
+  -# end modal Info
+  .panel.imagePanel{ :class => 'imageHolder'}
+    %a{"data-reveal-id" => "imgModal#{image.id}"}
+      = image_tag image.image.thumb.url, width: 300
+    = render 'images/image_info', {image: image, panel: false}
+    -if @votes_location_by_image && @votes_location_by_image[image.id]
+      .map{ :id => "map#{image.id}" }
+      -if image.owner == current_user && image.validate
+        =link_to t('users.images.wrong_location.button'), {:controller => "images", :action => "wrong", :image_id => image.id } , data: { :remote => true }, class: 'radius button alert small no-button'
+
+  -if @votes_location_by_image && @votes_location_by_image[image.id]
+    :javascript
+      handler#{image.id} = Gmaps.build('Google');
+      handler#{image.id}.buildMap(
+          {
+              internal: {id: 'map#{image.id}'}
+          },
+          function() {
+              var markers2 = handler#{image.id}.addMarkers(
+                #{raw @votes_location_by_image[image.id].to_json}
+              );
+
+              //calculated location
+              markers = handler#{image.id}.addMarker(
+                {
+                  lat: #{@correct_location_by_image[image.id][0]},
+                  lng: #{@correct_location_by_image[image.id][1]},
+                  picture: {
+                    url: '#{ asset_path('marker_found.png') }',
+                    width:  36,
+                    height: 58
+                  }
+                }
+              );
+
+              handler#{image.id}.bounds.extendWith(markers2);
+              handler#{image.id}.fitMapToBounds();
+
+          }
+      );
+

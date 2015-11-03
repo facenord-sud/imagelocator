@@ -1,0 +1,35 @@
+-content_for :title, 'Image Locator'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+-# content_for :images do
+  -if !current_user.nil?
+    .user_statistics
+      %h5
+        =current_user.name
+        =t('images.index.user_statistics_title')
+      %p
+        =t('images.index.user_statistics_credits')
+        =current_user.points
+        =t('images.index.user_statistics_points')
+      %p
+        =t('images.index.user_statistics_total')
+        =Vote.where(user_id: current_user.id).count
+        =t('images.index.user_statistics_votes')
+      %p
+        =t('images.index.user_statistics_last_seven_days')
+        =Vote.where(user_id: current_user.id).where("created_at >?", Time.now-7.days).count
+        =t('images.index.user_statistics_votes')
+      %p
+        =t('images.index.user_statistics_uploads')
+        =Image.where(user_id: current_user.id).count
+      %p
+        =t('images.index.user_statistics_last_seven_days')
+        =Image.where(user_id: current_user.id).where("created_at >?", Time.now-7.days).count
+      %p
+        =t('images.index.user_statistics_known_images')
+        =Vote.where('user_id = (?) AND validate = (?)', current_user.id, :correct).count
+
+.js-masonry{:id=>"mansonry-container", :'data-masonry-options'=>'{ "columnWidth": 300, "itemSelector": ".box" }'}
+  =render @images
+
+=paginate @images

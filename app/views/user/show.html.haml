@@ -1,0 +1,8 @@
+-content_for :title, 'Image Locator - Profile'
+-content_for :meta_description, 'Locate your images'
+-content_for :keywords, 'crowdsourcing, image, locator, lieu, people, power, unknow'
+%h2= t('user.show.profil')
+%h4= @user.to_s
+-#%h6= link_to t('users.show.user_images'), user_images_path(@user, type: 'uploaded')
+%h6= link_to t('users.show.user_votes'), user_images_path(@user, type: 'voted')
+%h6= link_to t('users.show.user_unknown'), user_images_path(@user, type: 'unknown')

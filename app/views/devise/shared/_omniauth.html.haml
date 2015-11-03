@@ -1,0 +1,5 @@
+%h2= t 'devise.registrations.new.omniauth.title'
+.panel
+  %blockquote= t 'devise.registrations.new.omniauth.blockquote'
+  =link_to t("devise.shared.links.sign_in_with_provider", provider: 'Facebook'), user_omniauth_authorize_path(:facebook), class: 'button expand'
+  -#=link_to t("devise.shared.links.sign_in_with_provider", provider: 'Google'), user_omniauth_authorize_path(:google_oauth2), class: 'button expand'
